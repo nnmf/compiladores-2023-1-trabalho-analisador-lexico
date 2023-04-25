@@ -52,6 +52,8 @@ def encontrar_Palavras_Reservadas(programa):
 
 
 def palavrasReservadas(palavras_reservadas_encontradas):
+    if not palavras_reservadas_encontradas:
+        print("Não há Palavras Reservadas.")
     for palavra in palavras_reservadas_encontradas:
         print(f"'{palavra}' é uma Palavra Reservada.")
 
@@ -65,6 +67,8 @@ def encontrar_operadores(programa):
 
 
 def imprimir_operadores(operadores_encontrados):
+    if not operadores_encontrados:
+        print("Não há Operadores.")
     for op in operadores_encontrados:
         print(f"'{op[1]}' é um Operador.")
 
@@ -72,7 +76,6 @@ def imprimir_operadores(operadores_encontrados):
 def encontrar_numeros(programa):
     padrao = expressoes_regulares['numerais']
     numeros_encontrados = re.findall(padrao, programa)
-
     inteiros = [num for num in numeros_encontrados if '.' not in num]
     floats = [num for num in numeros_encontrados if '.' in num]
 
@@ -84,25 +87,25 @@ def encontrar_numeros(programa):
 
 
 def imprimir_numeros(numeros, tipo):
+    if not numeros:
+        print(f"Não há nenhum numeral de tipo {tipo}.")
     for num in numeros:
         print(f"'{num}' é um numeral {tipo}.")
 
 
-def encontra_constantes_textuais(programa):
-    in_quotes = False
-    nova_string = ""
-    frase = ''
-    for i in range(len(programa)):
-        if programa[i] == '"' or programa[i] == "'":
-            in_quotes = not in_quotes
-            if not in_quotes:
-                print(f"'{frase}' é uma Constante Textual.")
-                frase = ''
-        elif in_quotes:
-            frase += programa[i]
-        else:
-            nova_string += programa[i]
+def encontrar_constantes_textuais(programa):
+    padrao = expressoes_regulares['constantes_textuais']
+    constantes_encontradas = re.findall(padrao, programa)
+    imprimir_constantes_textuais(constantes_encontradas)
+    nova_string = re.sub(padrao, lambda match: ' ', programa)
     return nova_string
+
+
+def imprimir_constantes_textuais(constantes_encontradas):
+    if not constantes_encontradas:
+        print("Não há Constantes Textuais.")
+    for constante in constantes_encontradas:
+        print(f"'{constante}' é uma Constante Textual.")
 
 
 def encontrar_delimitadores(programa):
@@ -113,8 +116,10 @@ def encontrar_delimitadores(programa):
     return nova_string
 
 
-def imprimir_delimitadores(caracteres_encontrados):
-    for caracteres in caracteres_encontrados:
+def imprimir_delimitadores(delimitadores_encontrados):
+    if not delimitadores_encontrados:
+        print("Não há Delimitadores.")
+    for caracteres in delimitadores_encontrados:
         print(f"'{caracteres}' é um Delimitador.")
 
 
@@ -153,6 +158,8 @@ def encontrar_identificadores(programa):
 
 
 def imprimir_identificadores(identificadores_encontrados):
+    if not identificadores_encontrados:
+        print("Não há identificadores.")
     for identificadores in identificadores_encontrados:
         print(f"'{identificadores}' é um identificador.")
 
@@ -347,5 +354,21 @@ def encontrar_caracteres_especiais(programa):
     padrao = expressoes_regulares['caracteres_especiais']
     caracteres_encontrados = re.findall(padrao, programa)
     return imprimir_caracteres_especiais(caracteres_encontrados)
+    
+def encontra_constantes_textuais(programa):
+    in_quotes = False
+    nova_string = ""
+    frase = ''
+    for i in range(len(programa)):
+        if programa[i] == '"' or programa[i] == "'":
+            in_quotes = not in_quotes
+            if not in_quotes:
+                print(f"'{frase}' é uma Constante Textual.")
+                frase = ''
+        elif in_quotes:
+            frase += programa[i]
+        else:
+            nova_string += programa[i]
+    return nova_string
 
 '''

@@ -60,7 +60,8 @@ expressoes_regulares = {
     'caracteres_especiais': r"[\[@&~!#$\^\|{}\]:;<>?,\.']|\(\)|\(|\)|{}|\[\]|\""'',
     'identificadores': r'[a-zA-Z_][a-zA-Z0-9_]*',
     'headers': r'([a-zA-Z]+\.[h])',
-    'delimitadores': r"[\(\)\[\]\{\};,]"
+    'delimitadores': r"[\(\)\[\]\{\};,]",
+    'constantes_textuais': r'"(.*?)"'
 }
 
 
@@ -70,6 +71,7 @@ expressoes_regulares = {
     'caracteres_especiais': r"[\[@&~!#$\^\|{}\]:;<>?,\.']|\(\)|\(|\)|{}|\[\]|\""'',
     'identificadores': r'[a-zA-Z_][a-zA-Z0-9_]*',
     'headers': r'([a-zA-Z]+\.[h])',
+    'delimitadores': r"[\(\)\[\]\{\};,]"
 }
 
 
