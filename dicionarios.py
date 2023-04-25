@@ -1,41 +1,53 @@
-palavras_chave = ["break",
-                  "case",
-                  "char",
-                  "const",
-                  "continue",
-                  "default",
-                  "do",
-                  "double",
-                  "else",
-                  "float",
-                  "for",
-                  "if",
-                  "int",
-                  "long",
-                  "return",
-                  "struct",
-                  "switch",
-                  "typedef",
-                  "void",
-                  "while",
-                  "string",
-                  "class",
-                  "struct",
-                  "include"]
+palavras_reservadas = ["break",
+                       "case",
+                       "char",
+                       "const",
+                       "continue",
+                       "default",
+                       "do",
+                       "double",
+                       "else",
+                       "float",
+                       "for",
+                       "if",
+                       "int",
+                       "long",
+                       "return",
+                       "struct",
+                       "switch",
+                       "typedef",
+                       "void",
+                       "while",
+                       "string",
+                       "class",
+                       "struct",
+                       "include"]
 
 operadores = ["+=",
               "-=",
+              "++",
+              "--",
+              "<=",
+              ">=",
+              "->",
+              "==",
+              "!=",
+              "||",
+              "&&",
+              "*=",
+              "/=",
+              "<",
+              ">",
               "+",
               "-",
               "=",
               "*",
               "/",
               "%",
-              "++",
-              "--",
-              "<=",
-              ">="
+              "!",
+              "&"
               ]
+
 
 ignoraveis = [" ",
               "'",
@@ -48,6 +60,7 @@ expressoes_regulares = {
     'caracteres_especiais': r"[\[@&~!#$\^\|{}\]:;<>?,\.']|\(\)|\(|\)|{}|\[\]|\""'',
     'identificadores': r'[a-zA-Z_][a-zA-Z0-9_]*',
     'headers': r'([a-zA-Z]+\.[h])',
+    'delimitadores': r"[\(\)\[\]\{\};,]"
 }
 
 
@@ -59,6 +72,16 @@ expressoes_regulares = {
     'headers': r'([a-zA-Z]+\.[h])',
 }
 
+
+delimitadores = ["(",
+                 ")",
+                 "[",
+                 "]",
+                 "{",
+                 "}",
+                 ";",
+                 ","
+                 ]
 
 
 expressoes_regulares = {

@@ -3,16 +3,18 @@ from dicionarios import *
 
 
 def main():
-    arquivo = ler_arquivo('./testes/teste1.c')
+    arquivo = ler_arquivo('./testes/teste2.c')
     programa = arquivo
     print(programa)
-    programa = encontrar_Palavras_Chave(programa)
+    programa = encontrar_Palavras_Reservadas(programa)
     print(programa)
     programa = encontrar_operadores(programa)
     print(programa)
     programa = encontrar_numeros(programa)
     print(programa)
-    programa = encontrar_caracteres_especiais(programa)
+    programa = encontra_constantes_textuais(programa)
+    print(programa)
+    programa = encontrar_delimitadores(programa)
     print(programa)
     analisar_string(programa)
     encontrar_palavras_com_numeros(programa)
