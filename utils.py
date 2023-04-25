@@ -123,35 +123,11 @@ def imprimir_delimitadores(delimitadores_encontrados):
         print(f"'{caracteres}' é um Delimitador.")
 
 
-def analisar_string(string):
-    for caractere in string:
-        if caractere not in operadores and caractere not in ignoraveis and not any(
-                re.findall(padrao, caractere) for padrao in expressoes_regulares.values()):
-            print(f"Erro: o caractere '{caractere}' não é permitido em um nome de identificador.")
-            sys.exit()
-
-
-def encontrar_palavras_com_numeros(programa):
-    padrao = r'\b(\d+[a-zA-Z0-9_]*)\b'
-    palavras_com_numeros = re.findall(padrao, programa)
-
-    for palavra in palavras_com_numeros:
-        if re.match('^\d', palavra):
-            print(f'Erro: palavra começando com número encontrada: {palavra}')
-            sys.exit()
-
-    return programa
-
-
 def encontrar_identificadores(programa):
+    analisar_string(programa)
+    encontrar_palavras_com_numeros(programa)
     padrao = expressoes_regulares['identificadores']
     caracteres_identificadores = re.findall(padrao, programa)
-
-    for identificador in caracteres_identificadores:
-        if re.match('^\d', identificador) or re.match('[^a-zA-Z0-9_]', identificador):
-            print(f'Erro: identificador inválido encontrado: {identificador}')
-            exit()
-
     imprimir_identificadores(caracteres_identificadores)
     nova_string = re.sub(padrao, lambda match: ' ', programa)
     return nova_string
@@ -162,6 +138,25 @@ def imprimir_identificadores(identificadores_encontrados):
         print("Não há identificadores.")
     for identificadores in identificadores_encontrados:
         print(f"'{identificadores}' é um identificador.")
+
+
+def analisar_string(string):
+    for caractere in string:
+        if caractere not in operadores and caractere not in ignoraveis and not any(
+                re.findall(padrao, caractere) for padrao in expressoes_regulares.values()):
+            print(f"Erro: o caractere '{caractere}' não é permitido!")
+            sys.exit()
+
+
+def encontrar_palavras_com_numeros(programa):
+    padrao = r'\b(\d+[a-zA-Z0-9_]*)\b'
+    palavras_com_numeros = re.findall(padrao, programa)
+    for palavra in palavras_com_numeros:
+        if re.match('^\d', palavra):
+            print(f'Erro: "{palavra}" é uma palavra inválida pois começa com um número.')
+            sys.exit()
+
+    return programa
 
 
 '''
