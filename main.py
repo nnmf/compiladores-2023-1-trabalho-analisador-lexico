@@ -3,7 +3,7 @@ from dicionarios import *
 
 
 def main():
-    nome = './testes/teste5.c'
+    nome = './testes/teste1.c'
     programa = ler_arquivo(nome)
     original = open(nome, 'r')
     print(original.read())
