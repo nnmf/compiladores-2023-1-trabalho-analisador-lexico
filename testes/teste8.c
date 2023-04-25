@@ -8,7 +8,7 @@ switch (valor) {
 	break;
 	
 	case 3 :
-	printf ("Terça\n");
+	printf ("Terca\n");
 	break;
 	
 	case 4 :

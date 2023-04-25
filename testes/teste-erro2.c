@@ -1,2 +1,2 @@
-int 2c = 10;
+int 2cao = 10;
 // erro léxico
