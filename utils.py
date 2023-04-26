@@ -124,7 +124,7 @@ def imprimir_delimitadores(delimitadores_encontrados):
 
 
 def encontrar_identificadores(programa):
-    analisar_string(programa)
+    encontrar_caractere_nao_permitido(programa)
     encontrar_palavras_com_numeros(programa)
     padrao = expressoes_regulares['identificadores']
     caracteres_identificadores = re.findall(padrao, programa)
@@ -140,8 +140,8 @@ def imprimir_identificadores(identificadores_encontrados):
         print(f"'{identificadores}' é um identificador.")
 
 
-def analisar_string(string):
-    for caractere in string:
+def encontrar_caractere_nao_permitido(programa):
+    for caractere in programa:
         if caractere not in operadores and caractere not in ignoraveis and not any(
                 re.findall(padrao, caractere) for padrao in expressoes_regulares.values()):
             print(f"Erro: o caractere '{caractere}' não é permitido!")
